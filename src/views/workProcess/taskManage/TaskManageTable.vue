@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :gutter="10" class="result">
-      <el-col :span="1.5" style="float: left;margin-left: 25px;font-size: 18px;color: #515a6e;">
+      <el-col :span="1.5" style="float: left;font-size: 18px;color: #515a6e;">
         <span>查询结果</span><span style="margin-left: 10px;font-size: 15px;">(共{{total}}条)</span>
       </el-col>
       <el-col :span="1.5" style="float: right;">
@@ -31,13 +31,16 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width"  fixed="right" width="300">
         <template slot-scope="scope">
           <el-button type="warning" size="small" @click="detail(scope.row)">详情</el-button>
-          <el-button type="success" icon="el-icon-edit"  size="small" plain @click="editTaskManage(scope.row)">编辑</el-button>
+          <el-button type="success" size="small" plain @click="editTaskManage(scope.row)">编辑</el-button>
           <el-button
             size="small"
             type="danger"
-            icon="el-icon-delete" 
             @click="deleteEquipment(scope.row)"
           >删除</el-button>
+          <el-button size="small" type="primary" v-if="scope.row.status === '完成实验'||scope.row.status === '已完成'"
+            @click="report(scope.row)"
+          >实验报告</el-button>
+          <el-button type="primary" icon="el-icon-download" size="small" v-if="scope.row.status === '完成实验'||scope.row.status === '已完成'"></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -76,7 +79,7 @@ export default {
         }
       ],
       ids: [],
-      multiple: false
+      multiple: true
     }
   },
   methods: {
@@ -125,6 +128,10 @@ export default {
         })
       }
     },
+    // 实验报告
+    report() {
+      this.$router.push('/workProcess/taskManage/taskDetail')
+    }
   }
 }
 </script>
@@ -134,6 +141,7 @@ export default {
   width: 100%;
   height: 60px;
   margin-left: 0 !important;
+  padding: 0 25px;
   line-height: 60px;
   background-color: #F0FAFF;
 }

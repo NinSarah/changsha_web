@@ -112,7 +112,7 @@ export const constantRoutes = [
         path: '/workProcess/taskManage/taskDetail',
         component: () => import('@/views/workProcess/taskManage/sub/TaskDetail'),
         name: 'taskDetail',
-        meta: { title: '配置任务详情' }
+        meta: { title: '任务详情' }
       }
     ]
   }

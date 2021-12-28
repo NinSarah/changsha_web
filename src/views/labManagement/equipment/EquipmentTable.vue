@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :gutter="10" class="result">
-      <el-col :span="1.5" style="float: left;margin-left: 25px;font-size: 18px;color: #515a6e;">
+      <el-col :span="1.5" style="float: left;font-size: 18px;color: #515a6e;">
         <span>查询结果</span><span style="margin-left: 10px;font-size: 15px;">(共{{total}}条)</span>
       </el-col>
       <el-col :span="1.5" style="float: right;">
@@ -120,6 +120,7 @@ export default {
   width: 100%;
   height: 60px;
   margin-left: 0 !important;
+  padding: 0 25px;
   line-height: 60px;
   background-color: #F0FAFF;
 }

@@ -1,27 +1,110 @@
 <template>
   <div class="task_detail">
-    <el-row :gutter="10" class="result">
-      <el-col :span="1.5" style="margin-left: 25px;font-size: 18px;color: #515a6e;">
-        <span>任务信息</span>
-      </el-col>
-    </el-row>
-
-    <div>
-      <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="检测对象">
-          <span>111</span>
-        </el-form-item>
-        <el-form-item label="强度等级">
-          <span>2222</span>
-        </el-form-item>
-      </el-form>
+    <div class="detail_table">
+      <!-- 任务信息标题 -->
+      <el-row :gutter="10" class="result">
+        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
+          <span>任务信息</span>
+        </el-col>
+      </el-row>
+      <!-- 任务信息 -->
+      <div>
+        <el-form ref="form" :model="form" label-width="100px">
+          <el-row :gutter="5">
+            <el-col :span="8">
+              <el-form-item label="检测对象:">
+                <span class="font">111</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="强度等级:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="项目:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row :gutter="5">
+            <el-col :span="8">
+              <el-form-item label="施工部位:">
+                <span class="font">111</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="车号:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="搅拌机序号:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="描述:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+      <!-- 质检员办理信息标题 -->
+      <el-row :gutter="10" class="result">
+        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
+          <span>{{title2}}</span>
+        </el-col>
+      </el-row>
+      <!-- 办理信息 -->
+      <div>
+        <el-form ref="form" :model="form" label-width="100px">
+          <el-row :gutter="5">
+            <el-col :span="8">
+              <el-form-item label="是否送检:">
+                <el-radio v-model="radio" label="1">是</el-radio>
+                <el-radio v-model="radio" label="2">否</el-radio>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="派工时间:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="办理意见:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row :gutter="5">
+            <el-col :span="8">
+              <el-form-item label="办理时间:">
+                <span class="font">111</span>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8">
+              <el-form-item label="办理人:">
+                <span class="font">2222</span>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+      <!-- 检测信息 -->
+      <el-row :gutter="10" class="result">
+        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
+          <span>检测信息</span>
+        </el-col>
+      </el-row>
     </div>
 
-    <el-row :gutter="10" class="result">
-      <el-col :span="1.5" style="margin-left: 25px;font-size: 18px;color: #515a6e;">
-        <span>{{title2}}</span>
-      </el-col>
-    </el-row>
+    <div class="bottom">
+      <el-button style="margin-right: 20px" @click="cancel">取 消 </el-button>
+      <el-button style="margin-right: 20px" @click="complete">完成实验</el-button>
+      <el-button type="primary" @click="saveDetail">保 存</el-button>
+    </div>
   </div>
 </template>
 
@@ -30,7 +113,22 @@ export default {
   name: 'TaskDetail',
   data() {
     return {
-      title2: '质检员办理信息'
+      title2: '质检员办理信息',
+      form: {}, // 任务信息
+      radio: '1',
+    }
+  },
+  methods: {
+    cancel() {
+      this.$router.push('/workProcess/taskManage')
+    },
+    // 完成实验
+    complete() {
+
+    },
+    // 保存
+    saveDetail() {
+
     }
   }
 }
@@ -38,12 +136,33 @@ export default {
 
 <style lang="scss" scoped>
 .task_detail {
-  padding: 20px;
-  .result {
-    width: 80%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #ccc;
+  padding: 30px 30px 30px 60px;
+  .detail_table {
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+  }
+  ::v-deep .result {
+    height: 50px;
+    line-height: 50px;
+    margin: 0 !important;
+    background-color: #e4e4e4;
+  }
+  .font {
+    color: #515a6e;
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -8px 6px -1px #efefef;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 5px;
+    left: 0;
+    height: 80px;
   }
 }
 </style>
