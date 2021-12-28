@@ -1,12 +1,12 @@
 <template>
   <div class="taskManage_container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="100px">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="80px">
       <el-form-item prop="where.taskName" label="任务名称">
-        <el-input v-model="queryParams.where.taskName" placeholder="请输入任务名称" clearable size="small"
-          style="width: 160px"  />
+        <el-input v-model="queryParams.where.taskName" placeholder="请输入任务名称" clearable
+          style="width: 160px" />
       </el-form-item> 
       <el-form-item prop="where.taskStatus" label="任务状态">
-        <el-select v-model="queryParams.where.taskStatus" placeholder="请选择" clearable>
+        <el-select v-model="queryParams.where.taskStatus" placeholder="请选择" style="width: 160px" clearable>
           <el-option
             v-for="item in taskStatus"
             :key="item.dictCode"
@@ -16,7 +16,7 @@
         </el-select>
       </el-form-item>
       <el-form-item prop="where.type" label="类型">
-        <el-select v-model="queryParams.where.type" placeholder="请选择" clearable>
+        <el-select v-model="queryParams.where.type" placeholder="请选择" style="width: 160px" clearable>
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -25,8 +25,8 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item  prop="where.createTime" label="处置方式">
-        <el-select v-model="queryParams.where.type" placeholder="请选择" clearable>
+      <el-form-item  prop="where.handleWay" label="处置方式">
+        <el-select v-model="queryParams.where.handleWay" placeholder="请选择" style="width: 160px" clearable>
           <el-option
             v-for="item in handleWay"
             :key="item.dictCode"

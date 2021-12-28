@@ -101,6 +101,20 @@ export const constantRoutes = [
         meta: { title: '配置实验项' }
       }
     ]
+  },
+  {
+    path: '/task-detail',
+    component: Layout,
+    hidden: true,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '/workProcess/taskManage/taskDetail',
+        component: () => import('@/views/workProcess/taskManage/sub/TaskDetail'),
+        name: 'taskDetail',
+        meta: { title: '配置任务详情' }
+      }
+    ]
   }
 ]
 
