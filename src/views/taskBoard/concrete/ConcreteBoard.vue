@@ -39,8 +39,7 @@ export default {
       queryParams: {
         page: 1,
         pageSize: 10,
-        where: {
-        }
+        where: {}
       },
       // 总条数
       total: 0,

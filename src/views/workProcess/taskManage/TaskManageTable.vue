@@ -37,10 +37,10 @@
             type="danger"
             @click="deleteEquipment(scope.row)"
           >删除</el-button>
-          <el-button size="small" type="primary" v-if="scope.row.status === '完成实验'||scope.row.status === '已完成'"
+          <el-button size="small" type="primary" v-if="scope.row.status === '完成实验'||scope.row.status === '已完结'"
             @click="report(scope.row)"
           >实验报告</el-button>
-          <el-button type="primary" icon="el-icon-download" size="small" v-if="scope.row.status === '完成实验'||scope.row.status === '已完成'"></el-button>
+          <el-button type="primary" icon="el-icon-download" size="small" v-if="scope.row.status === '完成实验'||scope.row.status === '已完结'"></el-button>
         </template>
       </el-table-column>
     </el-table>

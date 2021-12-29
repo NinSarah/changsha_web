@@ -68,12 +68,34 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/index'),
+        component: () => import('@/views/home/index'),
         name: 'Index',
         meta: { title: '实验数据分析', icon: 'dashboard', affix: true }
       }
     ]
   },
+  // {
+  //   path: '/iframe',
+  //   name: 'Iframe',
+  //   component: Layout,
+  //   hidden: false,
+  //   redirect: 'noredirect',
+  //   alwaysShow: true,
+  //     meta: {
+  //         title: "外部连接",
+  //         icon: "user",
+
+  //     },
+  //   children: [
+  //     {
+  //       path: 'iframeControl',
+  //       component: () => import('@/views/iframe/index'),
+  //       hidden: false,
+  //       name: 'IframeControl',
+  //       meta: { title: '链接' }
+  //     }
+  //   ]
+  // },
   {
     path: '/user',
     component: Layout,
@@ -113,6 +135,20 @@ export const constantRoutes = [
         component: () => import('@/views/workProcess/taskManage/sub/TaskDetail'),
         name: 'taskDetail',
         meta: { title: '任务详情' }
+      }
+    ]
+  },
+  {
+    path: '/process-config',
+    component: Layout,
+    hidden: true,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '/workProcess/processManage/processConfig',
+        component: () => import('@/views/workProcess/processManage/processConfig'),
+        name: 'processConfig',
+        meta: { title: '流程配置' }
       }
     ]
   }
@@ -193,7 +229,7 @@ export const dynamicRoutes = [
 ]
 
 export default new Router({
-  mode: 'hash', // 去掉url中的#
+  mode: 'history', // 去掉url中的#
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
