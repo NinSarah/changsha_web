@@ -21,6 +21,7 @@
       </el-form-item>
     </el-form>
 
+    <ConcreteTable />
 
     <!-- 分页 -->
     <pagination 
@@ -32,8 +33,10 @@
 </template>
 
 <script>
+import ConcreteTable from "./ConcreteTable.vue"
 export default {
   name: 'ConcreteBoard',
+  components: { ConcreteTable },
   data() {
     return {
       queryParams: {

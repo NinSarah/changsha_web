@@ -10,16 +10,17 @@ import { isExternal } from '@/utils/validate'
 
 export default {
   name: 'SvgIcon',
-  props: {
-    iconClass: {
-      type: String,
-      required: true
-    },
-    className: {
-      type: String,
-      default: ''
-    }
-  },
+  props: [ 'iconClass', 'className' ],
+  // props: {
+  //   iconClass: {
+  //     type: String,
+  //     required: true
+  //   },
+  //   className: {
+  //     type: String,
+  //     default: ''
+  //   }
+  // },
   computed: {
     isExternal() {
       return isExternal(this.iconClass)

@@ -25,19 +25,16 @@
       </el-form-item>
     </el-form>
 
+    <RawTable />
 
-    <!-- 分页 -->
-    <pagination 
-      :total="total" 
-      :page.sync="queryParams.page" 
-      :limit.sync="queryParams.pageSize"
-      @pagination="getRawMaterialList" />
   </div>
 </template>
 
 <script>
+import RawTable from "./RawTable"
 export default {
   name: 'RawMaterialBoard',
+  components: { RawTable },
   data() {
     return {
       queryParams: {
@@ -46,8 +43,6 @@ export default {
         where: {
         }
       },
-      // 总条数
-      total: 0,
     }
   },
   mounted() {
@@ -56,6 +51,9 @@ export default {
   methods: {
     getRawMaterialList() {
 
+    },
+    handleQuery() {
+      
     }
   }
 }
