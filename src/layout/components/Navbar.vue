@@ -6,6 +6,13 @@
     <top-nav id="topmenu-container" class="topmenu-container" v-if="topNav"/>
 
     <div class="right-menu">
+      <div class="errLog-container">
+        <el-badge :value="2" :max="100" class="item">
+          <el-tooltip class="item" effect="dark" content="有两条未读消息" placement="top-end">
+            <i class="el-icon-chat-dot-square" @click="massage"></i>
+          </el-tooltip>
+        </el-badge>
+      </div>
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar" class="user-avatar">
@@ -72,6 +79,9 @@ export default {
           location.href = '/index';
         })
       }).catch(() => {});
+    },
+    massage() {
+      this.$router.push('/message')
     }
   }
 }
@@ -107,11 +117,6 @@ export default {
     left: 50px;
   }
 
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
-
   .right-menu {
     float: right;
     height: 100%;
@@ -120,7 +125,19 @@ export default {
     &:focus {
       outline: none;
     }
-
+    .errLog-container {
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      height: 80px;
+      font-size: 22px;
+      vertical-align: middle;
+      cursor: pointer;
+      ::v-deep .el-badge__content.is-fixed{
+        position: absolute;
+        top: 11px;
+      }
+    }
     .right-menu-item {
       display: inline-block;
       padding: 0 8px;
@@ -128,7 +145,6 @@ export default {
       font-size: 18px;
       color: #5a5e66;
       vertical-align: text-bottom;
-
       &.hover-effect {
         cursor: pointer;
         transition: background .3s;

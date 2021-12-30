@@ -74,28 +74,20 @@ export const constantRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/iframe',
-  //   name: 'Iframe',
-  //   component: Layout,
-  //   hidden: false,
-  //   redirect: 'noredirect',
-  //   alwaysShow: true,
-  //     meta: {
-  //         title: "外部连接",
-  //         icon: "user",
-
-  //     },
-  //   children: [
-  //     {
-  //       path: 'iframeControl',
-  //       component: () => import('@/views/iframe/index'),
-  //       hidden: false,
-  //       name: 'IframeControl',
-  //       meta: { title: '链接' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '',
+    component: Layout,
+    hidden: true,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '/message',
+        component: () => import('@/views/message/index'),
+        name: 'Message',
+        meta: { title: '消息中心', icon: 'user' }
+      }
+    ]
+  },
   {
     path: '/user',
     component: Layout,

@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="panel">
-      <h4 style="background-color: #fffae6;"><i class="el-icon-video-play" style="color: #DDB100;margin-right: 5px;"></i>已退货  <span><i class="el-icon-folder"></i>{{total}}</span></h4>
+      <h4 style="background-color: #fffae6;"><i class="el-icon-document-remove" style="color: #DDB100;margin-right: 5px;"></i>已退货  <span><i class="el-icon-folder"></i>{{total}}</span></h4>
       <div class="panel_card">
         <el-card shadow="hover">
           <div style="width: 3px;background-color: #DDB100;margin-right: 8px;"></div>
