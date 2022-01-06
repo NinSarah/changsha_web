@@ -15,7 +15,7 @@
       <el-table-column label="标准要求" prop="target2" width="140" />
       <el-table-column label="操作" align="standard" class-name="small-padding fixed-width"  fixed="right" width="240">
         <template slot-scope="scope">
-          <el-button type="success" size="small" plain @click="editCoding(scope.row)">实验步骤</el-button>
+          <el-button type="success" size="small" plain @click="expSteps(scope.row)">实验步骤</el-button>
           <el-button
             size="small"
             type="primary"
@@ -34,6 +34,8 @@
 
     <AddOrEditConfigure  ref="AddOrEditConfigure"/>
 
+    <ExpSteps ref="expSteps"/>
+
     <div class="bottom">
       <el-button style="margin-right: 20px" @click="cancel">取 消 </el-button>
       <el-button type="primary" @click="saveDetail">保 存</el-button>
@@ -43,9 +45,10 @@
 
 <script>
 import AddOrEditConfigure from "../dialog/AddOrEditConfigure.vue"
+import ExpSteps from "../dialog/ExpSteps.vue"
 export default {
   name: 'Configure',
-  components: { AddOrEditConfigure },
+  components: { AddOrEditConfigure, ExpSteps },
   data() {
     return {
       configureList: [
@@ -74,6 +77,10 @@ export default {
     },
     configure(row) {
 
+    },
+    // 配置实验步骤
+    expSteps(row) {
+      this.$refs.expSteps.outerVisible = true
     },
     cancel() {
       this.$router.push('/coding')

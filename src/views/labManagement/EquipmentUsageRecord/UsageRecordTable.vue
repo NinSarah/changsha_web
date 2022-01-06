@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
 
-    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border  height="500">
+    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border  height="400">
       <el-table-column label="仪器编号" prop="equipmentCode" width="150" />
       <el-table-column label="仪器名称" prop="equipmentName" width="193" />
       <el-table-column label="仪器品牌" prop="equipmentBrand"  width="260"/>
@@ -55,13 +55,3 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-::v-deep .result {
-  width: 100%;
-  height: 60px;
-  margin-left: 0 !important;
-  padding: 0 25px;
-  line-height: 60px;
-  background-color: #F0FAFF;
-}
-</style>

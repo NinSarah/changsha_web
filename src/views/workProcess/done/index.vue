@@ -79,12 +79,5 @@ export default {
 <style lang="scss" scoped>
 .done_container {
   padding: 20px;
-  ::v-deep .result {
-    width: 100%;
-    height: 60px;
-    margin-left: 0 !important;
-    line-height: 60px;
-    background-color: #F0FAFF;
-  }
 }
 </style>

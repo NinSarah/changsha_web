@@ -143,7 +143,27 @@ export const constantRoutes = [
         meta: { title: '流程配置' }
       }
     ]
-  }
+  },
+  {
+    path: '/fieldService',
+    component: Layout,
+    hidden: true,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: '/recorder/fieldService/add',
+        component: (resolve) => require(['@/views/recorder/fieldService/sub/EditOrAddService'], resolve),
+        name: 'addService',
+        meta: { title: '新增现场服务' }
+      },
+      {
+        path: '/recorder/fieldService/edit',
+        component: (resolve) => require(['@/views/recorder/fieldService/sub/EditOrAddService'], resolve),
+        name: 'editService',
+        meta: { title: '编辑现场服务' }
+      },
+    ]
+  },
 ]
 
 // 动态路由，基于用户权限动态去加载
