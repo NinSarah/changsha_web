@@ -5,8 +5,8 @@
         <span>查询结果</span><span style="margin-left: 10px;font-size: 15px;">(共{{total}}条)</span>
       </el-col>
       <el-col :span="1.5" style="float: right;">
-        <el-button type="primary" icon="el-icon-plus"  @click="handleAdd">新增</el-button>
-        <el-button type="danger" icon="el-icon-delete" :disabled="multiple" @click="deleteEquipment">批量删除
+        <el-button type="primary" icon="el-icon-plus"  @click="handleAdd" size="small">新增</el-button>
+        <el-button type="danger" icon="el-icon-delete" :disabled="multiple" size="small" @click="deleteEquipment">批量删除
         </el-button>
       </el-col>
     </el-row>

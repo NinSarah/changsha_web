@@ -1,6 +1,13 @@
 <template>
   <div class="configure_container" > 
-    <el-button type="primary" class="addBtn"  @click="addNewBranch"> +新增</el-button>
+     <el-row :gutter="10" class="result">
+      <el-col :span="1.5" style="float: left;font-size: 18px;color: #515a6e;">
+        <span>配置实验项</span>
+      </el-col>
+      <el-col :span="1.5" style="float: right;">
+        <el-button type="primary" icon="el-icon-plus" size="small" @click="addNewBranch">新增</el-button>
+      </el-col>
+    </el-row>
     <el-table
       :data="configureList"
       style="width: 100%"
@@ -108,7 +115,7 @@ export default {
     background-color: #fff;
     position: fixed;
     bottom: 5px;
-    left: 0;
+    left: 80px;
     height: 80px;
   }
 }

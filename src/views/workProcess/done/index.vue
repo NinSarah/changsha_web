@@ -11,18 +11,18 @@
     </el-form>
 
     <el-row :gutter="10" class="result">
-      <el-col :span="1.5" style="float: left;margin-left: 25px;font-size: 18px;color: #515a6e;">
+      <el-col :span="1.5" style="float: left;font-size: 18px;color: #515a6e;">
         <span>查询结果</span><span style="margin-left: 10px;font-size: 15px;">(共{{total}}条)</span>
       </el-col>
     </el-row>
 
-    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border  height="500">
-      <el-table-column label="任务编号" prop="equipmentCode" width="120" />
-      <el-table-column label="任务名称" prop="equipmentName" width="180" />
+    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border height="400">
+      <el-table-column label="任务编号" prop="equipmentCode" width="180" />
+      <el-table-column label="任务名称" prop="equipmentName" width="220" />
       <el-table-column label="任务状态" prop="equipmentName" width="180" />
       <el-table-column label="派工时间" prop="equipmentBrand"  width="180"/>
       <el-table-column label="创建时间" prop="equipmentStatus" width="180"/>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width"  fixed="right" width="200">
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width"  fixed="right" width="120">
         <template slot-scope="scope">
           <el-button type="primary" @click="check(scope.row)">查看</el-button>
         </template>

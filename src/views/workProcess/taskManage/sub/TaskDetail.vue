@@ -1,124 +1,40 @@
 <template>
   <div class="task_detail">
-    <div class="detail_table">
-      <!-- 任务信息标题 -->
-      <el-row :gutter="10" class="result">
-        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
-          <span>任务信息</span>
-        </el-col>
-      </el-row>
-      <!-- 任务信息 -->
-      <div>
-        <el-form ref="form" :model="form" label-width="100px">
-          <el-row :gutter="5">
-            <el-col :span="8">
-              <el-form-item label="检测对象:">
-                <span class="font">111</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="强度等级:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="项目:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row :gutter="5">
-            <el-col :span="8">
-              <el-form-item label="施工部位:">
-                <span class="font">111</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="车号:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="搅拌机序号:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="描述:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </el-form>
-      </div>
-      <!-- 质检员办理信息标题 -->
-      <el-row :gutter="10" class="result">
-        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
-          <span>{{title2}}</span>
-        </el-col>
-      </el-row>
-      <!-- 办理信息 -->
-      <div>
-        <el-form ref="form" :model="form" label-width="100px">
-          <el-row :gutter="5">
-            <el-col :span="8">
-              <el-form-item label="是否送检:">
-                <el-radio v-model="radio" label="1">是</el-radio>
-                <el-radio v-model="radio" label="2">否</el-radio>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="派工时间:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="办理意见:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row :gutter="5">
-            <el-col :span="8">
-              <el-form-item label="办理时间:">
-                <span class="font">111</span>
-              </el-form-item>
-            </el-col>
-            <el-col :span="8">
-              <el-form-item label="办理人:">
-                <span class="font">2222</span>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </el-form>
-      </div>
-      <!-- 检测信息 -->
-      <el-row :gutter="10" class="result">
-        <el-col :span="1.5" style="margin-left: 25px;font-size: 16px;color: #515a6e;">
-          <span>检测信息</span>
-        </el-col>
-      </el-row>
+    <el-steps :space="500" :active="1" finish-status="success" align-center="">
+      <el-step title="步骤 1" description="任务基本信息">></el-step>
+      <el-step title="步骤 2" description="配置任务检测信息"></el-step>
+    </el-steps>
+
+    <div style="margin-top: 10px; margin-left: 10px;">
+      <OneStep ref="stepOneForm" v-show="active==1" :active.sync="active"/>
+      <TwoStep ref="stepTwoForm" v-if="active==2" />
     </div>
 
-    <div class="bottom">
+    <div style="margin-left: 420px;margin-top: 10px;">
       <el-button style="margin-right: 20px" @click="cancel">取 消 </el-button>
-      <el-button style="margin-right: 20px" @click="complete">完成实验</el-button>
-      <el-button type="primary" @click="saveDetail">保 存</el-button>
+      <el-button v-if="active==1" type="primary" style="margin-top: 12px;" @click="next">下一步</el-button>
+      <el-button v-if="active==2" type="primary" @click="saveDetail">保 存</el-button>
     </div>
+    
   </div>
 </template>
 
 <script>
+import OneStep from "./OneStep.vue"
+import TwoStep from "./TwoStep.vue"
 export default {
   name: 'TaskDetail',
+  components: { OneStep, TwoStep },
   data() {
     return {
+      active: 1,
       title2: '质检员办理信息',
-      form: {}, // 任务信息
-      radio: '1',
     }
   },
   methods: {
+    next() {
+      if (this.active++ > 2) this.active = 0;
+    },
     cancel() {
       this.$router.push('/workProcess/taskManage')
     },

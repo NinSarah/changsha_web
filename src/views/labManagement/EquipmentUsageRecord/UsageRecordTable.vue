@@ -5,7 +5,8 @@
         <span>查询结果</span><span style="margin-left: 10px;font-size: 15px;">(共{{total}}条)</span>
       </el-col>
       <el-col :span="1.5" style="float: right;margin-right: 10px;">
-        <el-button type="warning" icon="el-icon-download"  @click="exportUsageRecord">导出</el-button>
+        <el-button type="primary" icon="el-icon-plus" size="small" @click="addUsageRecord">新增</el-button>
+        <el-button type="warning" icon="el-icon-download" size="small" @click="exportUsageRecord">导出</el-button>
       </el-col>
     </el-row>
 
@@ -17,12 +18,17 @@
       <el-table-column label="仪器使用人" prop="verification" :show-overflow-tooltip="true" width="200" />
       <el-table-column label="仪器使用时间" prop="manufacture"  width="200"/>
     </el-table>
+
+    <AddDialog ref="AddDialog"/>
   </div>
 </template>
 
 <script>
+import AddDialog from "./AddDialog.vue"
+
 export default {
   name: 'UsageRecordTable',
+  components: { AddDialog },
   props: {
     total: {
       type: Number,
@@ -47,6 +53,10 @@ export default {
     }
   },
   methods: {
+    // 新增
+    addUsageRecord() {
+      this.$refs.AddDialog.open = true
+    },
     // 导出
     exportUsageRecord() {
 
