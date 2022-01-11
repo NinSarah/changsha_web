@@ -47,9 +47,11 @@
             type="info"
             icon="el-icon-printer"
           />
-          <el-button size="small" type="primary" icon="el-icon-document" v-if="scope.row.status === '完成实验'||scope.row.status === '已完结'"
-            @click="report(scope.row)"
-          ></el-button>
+          <el-tooltip class="item" effect="dark" content="实验报告" placement="top">
+            <el-button size="small" type="primary" icon="el-icon-document" v-if="scope.row.status === '完成实验'||scope.row.status === '已完结'"
+              @click="report(scope.row)"
+            ></el-button>
+          </el-tooltip>
           <el-button type="primary" icon="el-icon-download" size="small" v-if="scope.row.status === '完成实验'||scope.row.status === '已完结'"></el-button>
         </template>
       </el-table-column>

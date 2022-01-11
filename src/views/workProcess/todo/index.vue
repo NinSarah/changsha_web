@@ -16,7 +16,7 @@
       </el-col>
     </el-row>
 
-    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border  height="400">
+    <el-table v-loading="loading" :data="tableList" style="width: 100%;" border height="400">
       <el-table-column label="任务编号" prop="equipmentCode" width="80" />
       <el-table-column label="任务名称" prop="equipmentName" width="100" />
       <el-table-column label="项目" prop="equipmentName" width="100" />
